@@ -9,7 +9,6 @@ var models = require('./models')
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-const login = require('./login')
 
 var app=express()
 const puerto=3000
