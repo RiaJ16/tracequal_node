@@ -41,7 +41,7 @@ module.exports = function(app){
     })
 }
 
- function insertar_usuario(req, res){
+function insertar_usuario(req, res){
     const valor=new models.Usuario({
         username:req.body.username,
         nombre:req.body.nombre,
