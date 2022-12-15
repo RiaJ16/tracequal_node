@@ -7,12 +7,13 @@ module.exports = function(app){
         username = req.body.username;
         password = req.body.password;
         if(username && password){
-            models.Usuario.find()
+            models.Usuario.find({username: username}).select('+password')
             .then(doc=>{
                 if(password == doc[0].password){
-                    res.json({response:'Satisfactorio', login: true})
+                    res.json({response: 'Satisfactorio', login: true, 'usuario': doc[0]})
                 }
                 else{
+                    console.log(doc);
                     res.json({response:'No satisfactorio', login: false})
                 }
             })
@@ -24,5 +25,5 @@ module.exports = function(app){
             res.json({response:'No satisfactorio', login: false})
         }
     })
-
+    
 }

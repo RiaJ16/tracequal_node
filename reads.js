@@ -13,7 +13,18 @@ module.exports = function(app){
     })
 
     app.get('/proyectos', (req, res)=>{
-        models.Proyecto.find()
+        models.Proyecto.find().populate("usuarios")
+        .then(doc=>{
+            res.json({response:'satisfactorio', data:doc})
+        })
+        .catch(err=>{
+            console.log('Error: ' + err)
+        })
+    })
+
+    app.get('/proyectos/:usuario_id', (req, res)=>{
+        const usuario_id=req.params.usuario_id
+        models.Proyecto.find({"usuarios": usuario_id})
         .then(doc=>{
             res.json({response:'satisfactorio', data:doc})
         })

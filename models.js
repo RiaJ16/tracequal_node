@@ -6,7 +6,10 @@ const Usuario=mongoose.model('usuario', {
     nombre: String,
     apepat: String,
     apemat: String,
-    password: String,
+    password: {
+        type: String,
+        select: false,
+    },
     rol: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'rol',
