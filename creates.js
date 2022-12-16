@@ -12,8 +12,9 @@ module.exports = function(app){
         insertar_proyecto(req, res)
     })
 
-    app.post(ruta_insertar+'/proyecto/:userid', (req, res)=>{
-        insertar_proyecto_usuario(req, res, userid)
+    app.post(ruta_insertar+'/proyecto/:usuario_id', (req, res)=>{
+        const usuario_id=req.params.usuario_id
+        insertar_proyecto_usuario(req, res, usuario_id)
     })
 
     app.post(ruta_insertar+'/progreso', (req, res)=>{
