@@ -126,17 +126,11 @@ function insertar_progreso_proyecto(progreso){
         progreso_pruebas: progreso.progreso_pruebas,
     })
     valor.save((err, id_) => {
-        const { _id } = id_;
-        console.log(`New id: ${_id}`);
-        progreso_id = id_;
-      })
-    .then(doc=>{
+        if (err) return `Error al insertar progreso ${err.message}`;
+        const { _id } = progreso_id;
         console.log('Progreso almacenado', doc)
+        return progreso_id;
     })
-    .catch(err=>{
-        console.log("Error al insertar progreso", err.message)
-    })
-    return progreso_id;
 }
 
 function insertar_rol(req, res){
