@@ -128,11 +128,8 @@ function insertar_progreso_proyecto(progreso){
     valor.save((err, id_) => {
         if (err) return `Error al insertar progreso ${err.message}`;
         const { _id } = progreso_id;
-        console.log('Progreso almacenado', doc)
+        console.log('Progreso almacenado')
         return progreso_id;
-    })
-    .catch(err=>{
-        console.log("Error al insertar", err.message)
     })
 }
 
