@@ -21,7 +21,7 @@ const Proyecto=mongoose.model('proyecto', {
     id: Number,
     nombre: String,
     fecha_de_ingreso: Date,
-    id_progreso: {
+    progreso: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'progreso',
     },

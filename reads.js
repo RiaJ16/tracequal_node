@@ -13,7 +13,7 @@ module.exports = function(app){
     })
 
     app.get('/proyectos', (req, res)=>{
-        models.Proyecto.find().populate("usuarios")
+        models.Proyecto.find().populate("usuarios").populate("progreso")
         .then(doc=>{
             res.json({response:'satisfactorio', data:doc})
         })
