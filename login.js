@@ -10,11 +10,10 @@ module.exports = function(app){
             models.Usuario.find({username: username}).select('+password')
             .then(doc=>{
                 if(password == doc[0].password){
-                    res.json({response: 'Satisfactorio', data: {login: true, 'usuario': doc[0]}})
+                    res.json({response: 'Satisfactorio', login: true, 'usuario': doc[0]})
                 }
                 else{
-                    console.log(doc);
-                    res.json({response:'No satisfactorio', data: {login: false}})
+                    res.json({response:'No satisfactorio', login: false})
                 }
             })
             .catch(err=>{
@@ -25,5 +24,5 @@ module.exports = function(app){
             res.json({response:'No satisfactorio', login: false})
         }
     })
-
+    
 }
