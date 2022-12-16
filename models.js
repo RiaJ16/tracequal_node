@@ -6,6 +6,7 @@ const Usuario=mongoose.model('usuario', {
     nombre: String,
     apepat: String,
     apemat: String,
+    email: String,
     password: {
         type: String,
         select: false,

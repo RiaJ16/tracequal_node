@@ -52,8 +52,9 @@ function insertar_usuario(req, res){
         nombre:req.body.nombre,
         apepat:req.body.apepat,
         apemat:req.body.apemat,
+        email:req.body.email,
         password:req.body.password,
-        rol:req.body.rol,
+        rol: "63646f90dc06677bc87c5abe",
     })
     valor.save()
     .then(doc=>{
