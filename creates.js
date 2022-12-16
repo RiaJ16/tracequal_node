@@ -131,6 +131,9 @@ function insertar_progreso_proyecto(progreso){
         console.log('Progreso almacenado', doc)
         return progreso_id;
     })
+    .catch(err=>{
+        console.log("Error al insertar", err.message)
+    })
 }
 
 function insertar_rol(req, res){
