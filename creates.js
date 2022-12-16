@@ -118,6 +118,7 @@ function insertar_progreso(req, res){
 }
 
 function insertar_progreso_proyecto(progreso){
+    progreso_id = 0;
     const valor=new models.Progreso({
         progreso_requisitos: progreso.progreso_requisitos,
         progreso_diseno: progreso.progreso_diseno,
@@ -127,12 +128,14 @@ function insertar_progreso_proyecto(progreso){
     valor.save()
     .then(doc=>{
         console.log('Progreso almacenado', doc)
+        console.log("ID es ", valor.id_)
+        console.log("Otro ID es ", doc.id_)
+        progreso_id = valor.id_
     })
     .catch(err=>{
         console.log("Error al insertar progreso", err.message)
     })
-    console.log("ID es ", valor.id_)
-    return valor.id_;
+    return progreso_id;
 }
 
 function insertar_rol(req, res){
