@@ -34,6 +34,7 @@ module.exports.Proyecto = Proyecto;
 
 const Progreso=mongoose.model('progreso', {
     id: Number,
+    progreso_requisitos: Number,
     progreso_diseno: Number,
     progreso_codigo: Number,
     progreso_pruebas: Number,

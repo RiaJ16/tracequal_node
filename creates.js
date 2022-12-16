@@ -79,6 +79,7 @@ function insertar_proyecto(req, res){
 
 function insertar_progreso(req, res){
     const valor=new models.Progreso({
+        progreso_requisitos: req.body.progreso_requisitos,
         progreso_diseno: req.body.progreso_diseno,
         progreso_codigo: req.body.progreso_codigo,
         progreso_pruebas: req.body.progreso_pruebas,

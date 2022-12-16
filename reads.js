@@ -24,7 +24,7 @@ module.exports = function(app){
 
     app.get('/proyectos/:usuario_id', (req, res)=>{
         const usuario_id=req.params.usuario_id
-        models.Proyecto.find({"usuarios": usuario_id})
+        models.Proyecto.find({"usuarios": usuario_id}).populate("progreso")
         .then(doc=>{
             res.json({response:'satisfactorio', data:doc})
         })

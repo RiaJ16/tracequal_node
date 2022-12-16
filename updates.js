@@ -29,6 +29,7 @@ module.exports = function(app){
     app.get(ruta_actualizar+'/progreso/:id', (req, res)=>{
         const id=req.params.id
         models.Progreso.findByIdAndUpdate({_id:id}, {$set:{
+            progreso_requisitos: req.body.requisitos,
             progreso_diseno: req.body.diseno,
             progreso_codigo: req.body.codigo,
             progreso_pruebas: req.body.pruebas,
