@@ -12,6 +12,10 @@ module.exports = function(app){
         insertar_proyecto(req, res)
     })
 
+    app.post(ruta_insertar+'/proyecto/:userid', (req, res)=>{
+        insertar_proyecto_usuario(req, res, userid)
+    })
+
     app.post(ruta_insertar+'/progreso', (req, res)=>{
         insertar_progreso(req, res)
     })
@@ -64,8 +68,26 @@ function insertar_proyecto(req, res){
     const valor=new models.Proyecto({
         nombre: req.body.nombre,
         fecha_de_ingreso: new Date(),
-        id_progreso: req.body.id_progreso,
+        progreso: req.body.id_progreso,
         usuarios: [req.body.id_usuario],
+    })
+    valor.save()
+    .then(doc=>{
+        console.log('Información almacenada', doc)
+        res.json({response:"Success"})
+    })
+    .catch(err=>{
+        console.log("Error al insertar", err.message)
+    })
+}
+
+function insertar_proyecto_usuario(req, res, userid){
+    progreso_id = insertar_progreso_proyecto(req.body.progreso)
+    const valor=new models.Proyecto({
+        nombre: req.body.nombre,
+        fecha_de_ingreso: new Date(),
+        progreso: progreso_id,
+        usuarios: [userid],
     })
     valor.save()
     .then(doc=>{
@@ -92,6 +114,24 @@ function insertar_progreso(req, res){
     .catch(err=>{
         console.log("Error al insertar", err.message)
     })
+}
+
+function insertar_progreso_proyecto(progreso){
+    const valor=new models.Progreso({
+        progreso_requisitos: progreso.progreso_requisitos,
+        progreso_diseno: progreso.progreso_diseno,
+        progreso_codigo: progreso.progreso_codigo,
+        progreso_pruebas: progreso.progreso_pruebas,
+    })
+    valor.save()
+    .then(doc=>{
+        console.log('Progreso almacenado', doc)
+    })
+    .catch(err=>{
+        console.log("Error al insertar progreso", err.message)
+    })
+    console.log("ID es ", valor.id_)
+    return valor.id_;
 }
 
 function insertar_rol(req, res){
