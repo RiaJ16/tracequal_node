@@ -83,7 +83,8 @@ function insertar_proyecto(req, res){
 }
 
 function insertar_proyecto_usuario(req, res, userid){
-    progreso_id = insertar_progreso_proyecto(req.body.progreso)
+    //progreso_id = insertar_progreso_proyecto(req.body.progreso)
+    progreso_id = "639c9f1355cefc2993fa69b6"
     const valor=new models.Proyecto({
         nombre: req.body.nombre,
         fecha_de_ingreso: new Date(),
